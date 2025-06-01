@@ -14,8 +14,10 @@
     }
   },
   "scripts": {
-    "build": "vite build",
-    "test": "vitest"
+    "test": "node --experimental-transform-types --experimental-test-module-mocks --test",
+    "build": "tsup",
+    "prepublish": "npm run build",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -27,11 +29,10 @@
   },
   "homepage": "https://github.com/grind-t/moex#readme",
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.52.8",
     "@types/node": "^22.15.21",
-    "typescript": "^5.8.3",
-    "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.4",
-    "vitest": "^3.1.4"
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "dayjs": "^1.11.13"

@@ -1,4 +1,5 @@
-import { it, expect } from "vitest";
+import assert from "assert";
+import { it } from "node:test";
 import { getMoexResource } from "./getResource.ts";
 
 it("should build URL with given path, block and params", () => {
@@ -6,12 +7,12 @@ it("should build URL with given path, block and params", () => {
     ticker: "SBER",
     quantity: 100,
   });
-  expect(url.origin).toBe("https://iss.moex.com");
-  expect(url.pathname).toBe("/iss/engines/stock");
-  expect(url.searchParams.get("ticker")).toBe("SBER");
-  expect(url.searchParams.get("quantity")).toBe("100");
-  expect(url.searchParams.get("iss.meta")).toBe("off");
-  expect(url.searchParams.get("iss.only")).toBe("marketdata");
+  assert.strictEqual(url.origin, "https://iss.moex.com");
+  assert.strictEqual(url.pathname, "/iss/engines/stock");
+  assert.strictEqual(url.searchParams.get("ticker"), "SBER");
+  assert.strictEqual(url.searchParams.get("quantity"), "100");
+  assert.strictEqual(url.searchParams.get("iss.meta"), "off");
+  assert.strictEqual(url.searchParams.get("iss.only"), "marketdata");
 });
 
 it("should ignore undefined parameters", () => {
@@ -19,13 +20,16 @@ it("should ignore undefined parameters", () => {
     ticker: undefined,
     active: "true",
   });
-  expect(url.searchParams.has("ticker")).toBe(false);
-  expect(url.searchParams.get("active")).toBe("true");
+  assert.strictEqual(url.searchParams.has("ticker"), false);
+  assert.strictEqual(url.searchParams.get("active"), "true");
 });
 
 it("should work with no params provided", () => {
   const url = getMoexResource("engines/bonds", "marketdata");
-  expect(url.searchParams.get("iss.meta")).toBe("off");
-  expect(url.searchParams.get("iss.only")).toBe("marketdata");
-  expect(url.searchParams.toString()).toBe("iss.meta=off&iss.only=marketdata");
+  assert.strictEqual(url.searchParams.get("iss.meta"), "off");
+  assert.strictEqual(url.searchParams.get("iss.only"), "marketdata");
+  assert.strictEqual(
+    url.searchParams.toString(),
+    "iss.meta=off&iss.only=marketdata"
+  );
 });

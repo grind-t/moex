@@ -1,4 +1,5 @@
-import { it, expect } from "vitest";
+import { it } from "node:test";
+import assert from "node:assert";
 import { parseMoexBlock } from "./parseBlock.ts";
 
 it("should correctly parse a valid block", () => {
@@ -11,7 +12,7 @@ it("should correctly parse a valid block", () => {
     ],
   };
   const result = parseMoexBlock<TestRecord>(block);
-  expect(result).toStrictEqual([
+  assert.deepStrictEqual(result, [
     { a: 1, b: "one" },
     { a: 2, b: "two" },
   ]);
@@ -24,7 +25,7 @@ it("should handle empty data", () => {
     data: [],
   };
   const result = parseMoexBlock<TestRecord>(block);
-  expect(result).toStrictEqual([]);
+  assert.deepStrictEqual(result, []);
 });
 
 it("maps row values correctly when some values are missing", () => {
@@ -34,6 +35,6 @@ it("maps row values correctly when some values are missing", () => {
     data: [[10]],
   };
   const result = parseMoexBlock<TestRecord>(block);
-  expect(result[0].a).toBe(10);
-  expect(result[0].b).toBe(undefined);
+  assert.strictEqual(result[0].a, 10);
+  assert.strictEqual(result[0].b, undefined);
 });

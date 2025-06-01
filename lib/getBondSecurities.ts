@@ -1,4 +1,4 @@
-import { getMoexSecurities, type MoexSecurity } from "./getSecurities";
+import { getMoexSecurities, type MoexSecurity } from "./getSecurities.ts";
 
 export async function getMoexBondSecurities(): Promise<MoexSecurity[]> {
   let securities: MoexSecurity[] = [];

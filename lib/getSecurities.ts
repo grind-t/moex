@@ -1,4 +1,4 @@
-import { moexFetch } from "./core/fetch";
+import { moexFetch } from "./core/fetch.ts";
 import type { Engine, Market } from "./core/types.ts";
 
 export type MoexSecurity = {

@@ -1,5 +1,5 @@
-import { getMoexResource } from "./getResource";
-import { parseMoexBlock } from "./parseBlock";
+import { getMoexResource } from "./getResource.ts";
+import { parseMoexBlock } from "./parseBlock.ts";
 
 export async function moexFetch<T extends Record<string, unknown>>(
   path: string,
