@@ -14,9 +14,7 @@
   },
   "scripts": {
     "test": "node --experimental-transform-types --experimental-test-module-mocks --test",
-    "build": "tsup",
-    "prepublish": "npm run build",
-    "publish": "npm publish --access public"
+    "build": "tsup"
   },
   "repository": {
     "type": "git",
