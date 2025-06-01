@@ -8,7 +8,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "lib/index.ts"),
+      entry: {
+        index: resolve(__dirname, "lib/index.ts"),
+      },
       name: "Moex",
     },
   },
