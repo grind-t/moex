@@ -3,6 +3,7 @@ export * from "./core/getResource.ts";
 export * from "./core/parseBlock.ts";
 export * from "./core/types.ts";
 export * from "./getBondSecurities.ts";
+export * from './getBonds.ts';
 export * from "./getBondsMarketYield.ts";
 export * from './getBondsMarketData.ts';
 export * from "./getDailyTable.ts";
