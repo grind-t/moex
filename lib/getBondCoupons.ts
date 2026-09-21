@@ -17,22 +17,15 @@ export type MoexBondCoupon = {
   primary_boardid: string;
 };
 
-export async function getMoexBondCoupons(): Promise<MoexBondCoupon[]> {
-  let coupons: MoexBondCoupon[] = [];
-  let start = 0;
-
-  while (true) {
-    const chunk = await moexFetch<MoexBondCoupon>(
-      "/statistics/engines/stock/markets/bonds/bondization.json",
-      "coupons",
-      { start, limit: 100 }
-    );
-
-    coupons.push(...chunk);
-    start += chunk.length;
-
-    if (chunk.length < 100) {
-      return coupons;
-    }
-  }
-}
+export const getMoexBondCoupons = (params: {
+  lang?: "ru" | "en";
+  from?: string;
+  till?: string;
+  limit?: 5 | 10 | 20 | 100;
+  start?: number;
+}) =>
+  moexFetch<MoexBondCoupon>(
+    "/statistics/engines/stock/markets/bonds/bondization.json",
+    "coupons",
+    params
+  );
