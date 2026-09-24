@@ -9,3 +9,4 @@ export * from "./getBondsMarketYield.ts";
 export * from './getBondsMarketData.ts';
 export * from "./getDailyTable.ts";
 export * from "./getSecurities.ts";
+export * from "./getSecurityDescription.ts";
