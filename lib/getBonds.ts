@@ -46,8 +46,9 @@ export type MoexBond = {
   DATEYIELDFROMISSUER: string;
 };
 
-export const getMoexBonds = () =>
+export const getMoexBonds = (params: { primary_board?: 1 | 0 } = {}) =>
   moexFetch<MoexBond>(
     `/engines/stock/markets/bonds/securities.json`,
-    "securities"
+    "securities",
+    params
   );
